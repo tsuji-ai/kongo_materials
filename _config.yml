@@ -1,0 +1,13 @@
+# kongo_materials — Jekyll最小設定
+# GitHub Pages のビルドパイプラインには乗せるが、テーマ・レイアウトは使わない
+# (配布HTMLはそれぞれ自己完結の静的ページとして持ち込むため)
+
+theme: null
+
+markdown: kramdown
+highlighter: rouge
+
+exclude:
+  - README.md
+  - .gitignore
+  - node_modules

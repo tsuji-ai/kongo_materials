@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>03/07調光（HOYA SENSITY）施策 夏帯8月本番 — Working Backwards</title>
+<!-- Source: 90_Built/gas/2026_natsuobi_0307_chokou_wb_webapp/index.html (clasp deploy @2 2026-07-19 土井マネ目標値反映) → GitHub Pages 移行版 2026-07-19 -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --ink:#0f172a; --ink2:#334155; --muted:#64748b;
+    --line:#e2e8f0; --bg:#f4f5f7;
+    --navy:#0b2545;
+    --cho:#2563eb; --cho-dark:#1e40af; --cho-bg:#eff6ff; --cho-line:#bfdbfe;
+    --com:#b8860b; --com-bg:#fef9e7; --com-line:#fde68a;
+    --good:#0a7c4a;
+  }
+  html,body{font-family:'Noto Sans JP',sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
+  body{background:var(--bg)}
+  .wrap{max-width:760px;margin:0 auto;padding:0 0 40px}
+
+  .hero{
+    background:linear-gradient(135deg,#0b2545 0%,#13315c 55%,#1a4173 100%);
+    color:#fff;padding:36px 28px 30px;position:relative;overflow:hidden;
+  }
+  .hero::after{
+    content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;
+    background:radial-gradient(circle,var(--cho) 0%,transparent 70%);opacity:.35;
+  }
+  .hero .chips{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap;position:relative;z-index:1}
+  .chip{font-size:12px;font-weight:700;padding:4px 12px;border-radius:99px;background:rgba(255,255,255,.16);letter-spacing:.03em}
+  .chip.ac{background:var(--cho)}
+  .hero .dateline{font-size:12.5px;color:#aac0dc;margin-bottom:10px;position:relative;z-index:1}
+  .hero h1{font-size:22px;font-weight:900;line-height:1.5;position:relative;z-index:1;letter-spacing:-.01em}
+  .hero h2{font-size:14.5px;font-weight:500;color:#dbe6f4;margin-top:12px;line-height:1.7;position:relative;z-index:1}
+
+  .umbrella{
+    background:linear-gradient(90deg,var(--com-bg) 0%,#fff8d6 50%,var(--com-bg) 100%);
+    border-bottom:1px solid var(--com-line);
+    padding:16px 28px;text-align:center;
+  }
+  .umbrella b{font-size:16px;color:var(--com);letter-spacing:.02em}
+
+  main{background:#fff;padding:0 28px}
+  section{padding:26px 0;border-bottom:1px solid var(--line)}
+  section:last-of-type{border-bottom:none}
+  h3{font-size:12px;font-weight:900;color:var(--cho-dark);letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+  h3::before{content:"";width:4px;height:14px;background:var(--cho);border-radius:2px;display:inline-block}
+  p{font-size:14px;line-height:1.9;color:var(--ink2);margin-bottom:10px}
+  p b, li b{color:var(--ink);font-weight:700}
+  ul.list{padding-left:20px;margin-top:6px}
+  ul.list li{font-size:13.5px;line-height:1.8;color:var(--ink2);margin-bottom:6px}
+
+  .lock{
+    background:var(--cho-bg);border:1px solid var(--cho-line);border-radius:8px;
+    padding:14px 16px;margin:12px 0;font-size:13.5px;line-height:1.8;color:var(--ink);
+  }
+  .lock .lb{font-size:10.5px;font-weight:900;color:var(--cho-dark);letter-spacing:.06em;margin-bottom:6px}
+
+  blockquote{
+    background:#fafbfc;border-left:4px solid var(--cho);border-radius:0 6px 6px 0;
+    padding:14px 18px;margin:12px 0;font-size:13.5px;line-height:1.85;color:var(--ink2);
+  }
+  .voice-card{
+    background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin-bottom:14px;
+  }
+  .voice-card .who{font-size:12.5px;font-weight:900;color:var(--cho-dark);margin-bottom:8px}
+  .voice-card .who .sub{font-weight:500;color:var(--muted);font-size:11.5px}
+  .voice-card blockquote{margin:0;background:transparent;border-left:none;padding:0}
+
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:12.5px}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;line-height:1.6}
+  th{background:var(--cho-bg);color:var(--cho-dark);font-weight:900;font-size:11.5px}
+  tr:nth-child(even) td{background:#fafbfc}
+
+  .steps{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+  .step{background:var(--cho-bg);border:1px solid var(--cho-line);border-radius:8px;padding:8px 12px;font-size:12.5px;font-weight:700;color:var(--cho-dark);flex:1 1 140px;text-align:center}
+  .step .n{display:inline-flex;width:18px;height:18px;border-radius:50%;background:var(--cho);color:#fff;font-size:10.5px;align-items:center;justify-content:center;margin-right:5px}
+
+  .faq-item{margin-bottom:14px}
+  .faq-q{font-size:13.5px;font-weight:900;color:var(--ink);margin-bottom:6px}
+  .faq-q .qno{display:inline-block;font-size:10.5px;font-weight:900;padding:2px 7px;border-radius:3px;background:var(--cho);color:#fff;margin-right:6px}
+  .faq-a{background:#fafbfc;border-radius:6px;padding:10px 14px;font-size:12.5px;line-height:1.8;color:var(--ink2)}
+  .faq-a .step-line{margin-bottom:4px}
+  .faq-a .icx{color:var(--good);font-weight:900;margin-right:4px}
+  .faq-a .dead{color:var(--muted);font-size:11.5px;font-style:italic;margin-bottom:6px}
+
+  .offer-band{
+    background:linear-gradient(90deg,var(--cho) 0%,#5b8def 100%);color:#fff;
+    border-radius:10px;padding:16px 18px;margin:14px 0;text-align:center;
+  }
+  .offer-band .big{font-size:19px;font-weight:900;letter-spacing:.01em}
+  .offer-band .small{font-size:12px;margin-top:4px;opacity:.9}
+
+  footer{background:var(--navy);color:#aac0dc;padding:24px 28px;font-size:11.5px;line-height:1.9}
+  footer .brand{color:#fff;font-weight:900;font-size:13px;margin-bottom:6px}
+  footer a{color:#9fc1e8}
+  footer ul{padding-left:16px;margin-top:6px}
+
+  @media(max-width:600px){
+    .hero{padding:26px 18px 22px}
+    main{padding:0 18px}
+    .umbrella{padding:14px 18px}
+    footer{padding:20px 18px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <div class="chips">
+      <span class="chip ac">03/07調光</span>
+      <span class="chip">HOYA SENSITY</span>
+      <span class="chip">夏帯8月本番</span>
+    </div>
+    <div class="dateline">2026年9月1日、大阪・南河内</div>
+    <h1>メガネの金剛店(03)＋ MOCA北野田店(07)、"かけっぱなし" の一本で、体力変化と散歩の眩しさを "整える側" に居させる夏</h1>
+    <h2>「屋内で色が抜けて、そのまま日常に入れる。」— 掛け替えなくていい調光を、"整える側" に居たい既存客に。</h2>
+  </div>
+
+  <div class="umbrella">
+    <b>眩しさは、我慢するものじゃない。</b>
+  </div>
+
+  <main>
+
+    <section>
+      <h3>サービスの要約</h3>
+      <p>株式会社メガネの金剛（以下、メガネの金剛）は、<b>メガネの金剛店（03）＋ MOCA北野田店（07）</b>の2店舗で、<b>2026年8月1日（土）〜8月31日（月）の31日間</b>にわたり調光メイン施策を展開する（制作物の準備が早く整えば、<b>7月中旬からの前倒し開始も可</b>）。本施策の商材は <b>HOYA SENSITY（可視光DARK／UV 2）</b>。普段から眼鏡を外せない60-70代の既存客に、散歩や買い物の場面で「屋内で色が抜けて『かけっぱなし』のまま日常に入れる一本」を届ける。術前術後の眩しさが動機を後押しした層にも同じ形で届ける。</p>
+
+      <div class="lock">
+        <div class="lb">ターゲット定義（辻 2026-06-19 実送信版・100字ロック）</div>
+        普段から眼鏡を外せない60-70代既存客で、散歩や買い物でカバンの中身を選別するのは体力変化のせい。屋内で色が抜けて「かけっぱなし」のまま日常に入れる一本に出会いたい層。術前術後の眩しさも背中を押す。
+      </div>
+
+      <div class="offer-band">
+        <div class="big">オプション無料</div>
+        <div class="small">単価想定 5万円／5-6月と同じ内容を踏襲</div>
+      </div>
+
+      <p><b>手法（辻スコープ＝遠隔集客）</b>：個別DM中心＋LINE補助。シニア層はLINEの反応が弱い（03/07のLINE来店率0.64-0.77%）ため、手法weightはDM主／LINE従（M3側と逆）。一斉フェアDMは不採用。</p>
+    </section>
+
+    <section>
+      <h3>課題</h3>
+      <p>このターゲットは、「年やからね」で片付けていく側から降りて、"整える側" に居ようとしている60-70代（80代も含む）。</p>
+      <ul class="list">
+        <li>普段から眼鏡を外せない（度が入っていないと見えない層）</li>
+        <li>散歩・買い物・車移動で<b>ふと</b>眩しさを感じるようになった</li>
+        <li>「カバンの中身を選別する」＝<b>体力変化のせい</b>（重い荷物を持てなくなった）</li>
+        <li>掛け替え・かけ外しの動作そのものが<b>手が塞がる／どこかに置き忘れる／面倒くさい</b></li>
+        <li>「屋内で色が抜けて、かけっぱなしのまま日常に入れる一本に<b>出会いたい</b>」——ただし自分から探しに動くほどではない</li>
+        <li><b>術前術後の眩しさ</b>が来店動機を後押し（併走するが、核ではない）</li>
+      </ul>
+    </section>
+
+    <section>
+      <h3>課題解決</h3>
+      <p><b>1. 「体力変化のせい」を、道具の選別で肯定した</b><br>「荷物増えないんやったらOK、でも増えるならいらない」——掛け替え不要の一本は"増えない選択肢"。"整える側"に居たい既存客の自己像を、"選び抜いた一本"として肯定する。</p>
+      <p><b>2. 「量販で後悔する前に」を、選定力で刈り取った</b><br>量販の可視光調光とHOYA SENSITYの性能差は正直「言えない」。だからこそ勝つのは選定力（量販クチコミ不満harvest：色が合わない／濃さが合わない、が実在）。</p>
+      <p><b>3. 「白内障術前後の眩しさ」を、"楽" にする一本で受けた</b><br>「ものすごいよく見える」「しんどい」「かけ外しのめんどくささ」を、SENSITYの"かけっぱなし"で解く。"眩しさを消す"のでなく"眩しすぎない状態でちゃんと見える"濃度を、一緒に選ぶ。</p>
+      <p><b>4. 店頭の一言を、全員が言えるようにした</b><br>「外で一度かけてみてください」。試着で外に出た瞬間、"明るいのに眩しくない"が自分の口から出る体感を共有する。</p>
+    </section>
+
+    <section>
+      <h3>リーダーの声</h3>
+      <div class="voice-card">
+        <div class="who">佐藤社長（株式会社メガネの金剛）<span class="sub"> — 2026-05-15 13:05 Cybozu C3 #36 実発言</span></div>
+        <blockquote>「相違ありません。その方向性で進めてください。山澤さん＞MOCA1はタレックスを軸に偏光SGは販売したいので今回のプロモーションについては外しています。山澤さんの判断で、[タレックスの打ち出しでも使えそう][割引なしでもInstagramでキレイに載せられそう]と、MOCA1でイメージできるものあれば井上さん、西村くんに、ぶつけてみてもらえればと思います。」</blockquote>
+      </div>
+      <p style="font-size:12px;color:var(--muted)">※サイクル1のM1タレックス軸確定判断であると同時に、"店舗ごとに主軸を分ける"原則の確立宣言。03/07調光×M3偏光の分離も、この原則の延長。</p>
+    </section>
+
+    <section>
+      <h3>お客様の声（16本モノローグ v0.2 から抜粋）</h3>
+
+      <div class="voice-card">
+        <div class="who">C1 — 辻本音シルエット<span class="sub">・70代前後・"年やからね"と言い切る自己許可</span></div>
+        <blockquote>「明確な答えもないまま、ずっと我慢してきたんよ、本当は。」<br><br>「外に出たら自然にすうっと濃うなって、お店に入ったら気がついたら色が抜けてる。かけ替えんでええ。私な、もうあのカチャカチャ眼鏡掛け替えるん、面倒で。手はふさがってるし、どっかに置き忘れるし。」<br><br>「私な、もう、自分のために、ええ加減ちゃんと整えなあかんわ、って思うんよ。年やからね。」</blockquote>
+      </div>
+
+      <div class="voice-card">
+        <div class="who">C3 — 山澤MTG 60代女性<span class="sub">・犬の散歩・Kb2年・買い足し・"整える側"</span></div>
+        <blockquote>「荷物増えないんやったらOK、でも増えるならいらない。自分が心地良く過ごすために道具は必要やと思うのよ。」<br><br>「掛け替えへんでええ。一本のままで、散歩も買い物も、家に戻ってからも、ずっと掛けっぱなしでええ。荷物が増えへん。」<br><br>「整える側にいたいの、私は。」</blockquote>
+      </div>
+
+      <div class="voice-card">
+        <div class="who">C2 — 美和子さん<span class="sub">・48-52歳女性・M3既存・両立ジレンマ・"いつもの私のまま"</span></div>
+        <blockquote>「かけたまま、私のまま、目上の方の前でも、家の前の道でも、車の運転席でも、同じ顔で居られる。」<br><br>「真っ黒すぎたら、ちょっと品が悪いなあと思うんです。でも、これくらいのカラーやったら、『メイキングつけてるのね』って言われて、セーフな感じ。」</blockquote>
+      </div>
+
+      <div class="voice-card">
+        <div class="who">補足 — 術前術後の眩しさ<span class="sub">（5/7 M3接客ログ／B10自筆）</span></div>
+        <blockquote>「ものすごいよく見える、見えるんですよ」「（かけてると）しんどいんですよね」「かけ外しの、めんどくさい」（M3白内障術後客）<br><br>「すすめてもらったレンズ…目が楽なので安心して外出しています」（03店 石井様）<br><br>「自分ではどんな眼鏡を選んでいいのかわからなかったので…選んでもらえたの凄く嬉しかった」（07店 佐藤様）</blockquote>
+      </div>
+    </section>
+
+    <section>
+      <h3>次のステップ</h3>
+      <div class="steps">
+        <div class="step"><span class="n">1</span>DM/LINEで気づく</div>
+        <div class="step"><span class="n">2</span>来店・試着</div>
+        <div class="step"><span class="n">3</span>「明るいのに眩しくない」</div>
+        <div class="step"><span class="n">4</span>濃度・色を選ぶ</div>
+        <div class="step"><span class="n">5</span>価格確認・選択</div>
+      </div>
+      <p style="font-size:12.5px;color:var(--muted)">価格表を一緒に確認（HOYA SENSITY 5万想定・オプション無料）、既存フレームのレンズ交換 or 新フレームを選択。</p>
+    </section>
+
+    <section>
+      <h3>今後の展望</h3>
+      <p>夏帯8月本番の終了時点で、9月に辻→佐藤社長へ月次棚卸しレポートを提出する。実測値でDM反応率・LINE来店率・成約率を係数実数化し、次の秋帯施策（9月以降）の設計に接続する。眼科連携（遮光レンズ処方箋）ルートは現場・医療連携の別線として並走する（辻の遠隔スコープ外）。</p>
+    </section>
+
+    <section>
+      <h3>提供開始日</h3>
+      <table>
+        <tr><th>本番期間</th><td>2026年8月1日（土）〜8月31日（月）</td></tr>
+        <tr><th>前倒し開始</th><td>制作物（KV・DM・POP）の準備が整い次第、7月中旬からの開始も可</td></tr>
+        <tr><th>月次棚卸しレポート</th><td>8月末〜9月初 に辻→佐藤社長へ配信</td></tr>
+      </table>
+    </section>
+
+    <section>
+      <h3>各人の役割</h3>
+      <table>
+        <tr><th>相手</th><th>担当範囲</th><th>主なアウトプット</th></tr>
+        <tr><td>山澤さん</td><td>KV傘＋03/07調光サブKVの発注、タペ・A1A2パネル・A4卓上POP・個別DMの発注管理</td><td>発注済み制作物の納期一覧・進捗管理</td></tr>
+        <tr><td>芦野さん</td><td>LINE配信内容の作成（月3回中の調光ネタ）、MOCAブログ執筆（月曜デッドライン運用）</td><td>調光ネタのLINE配信カード＋ブログ記事</td></tr>
+        <tr><td>中村さん</td><td>LINE配信予約設定、全体告知</td><td>配信予約完了・スレでの完了報告</td></tr>
+        <tr><td>03/07現場</td><td>店内周知、接客導線の調整、"眩しくないけどよう見える"体感の店頭再現、眼科処方箋ルートとの並走管理</td><td>03/07店内での定着</td></tr>
+        <tr><td>佐藤社長（cc）</td><td>上段指針の確認、月次棚卸しレポートの受領</td><td>承認・修正指示（必要時）</td></tr>
+      </table>
+    </section>
+
+    <section>
+      <h3>Strategic FAQ（Anti-Dead Logic）</h3>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="qno">Q1</span>眼科で言われたけど、サングラスって黒くて怖い</div>
+        <div class="faq-a">
+          <div class="dead">✗ Dead Logic：「今は薄い色もあります」→ 心情素通り</div>
+          <div class="step-line"><span class="icx">①</span>"サングラスかけてるな"って見た目が変わるの、気になりますよね</div>
+          <div class="step-line"><span class="icx">②</span>先日、白内障の手術後のお客様も、試着で"明るいのに眩しくない"ってご自身から言われたんです</div>
+          <div class="step-line"><span class="icx">③</span>濃さは何段階かあるので、"眩しすぎない状態でちゃんと見える"を一緒に選ばせてもらえたら</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="qno">Q2</span>かけたり外したりが面倒</div>
+        <div class="faq-a">
+          <div class="dead">✗ Dead Logic：「調光なら1本で済みますよ」→ 即・機能提案</div>
+          <div class="step-line"><span class="icx">①</span>手はふさがってるし、どっかに置き忘れるし、地味に困りますよね</div>
+          <div class="step-line"><span class="icx">②</span>先日いらしたお客様、"あのカチャカチャ面倒で"っておっしゃっていて、1本でその手間が消えたんです</div>
+          <div class="step-line"><span class="icx">③</span>屋内では薄く、外では濃くなる調光を、一度かけて歩いてみてもらえたら</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="qno">Q3</span>量販の調光と何が違うの？</div>
+        <div class="faq-a">
+          <div class="dead">✗ Dead Logic：「うちの方が品質が上です」→ 押し付け（実際、性能差は言えない）</div>
+          <div class="step-line"><span class="icx">①</span>量販の可視光調光、いいところありますよね</div>
+          <div class="step-line"><span class="icx">②</span>量販で選んで後で"色が合わなかった"って買い直しに来られる方も結構いらしゃいます</div>
+          <div class="step-line"><span class="icx">③</span>生活のシーンを一緒に整理して、色と濃度を選ばせてもらえたら</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="qno">Q4</span>安いので十分と思ってた</div>
+        <div class="faq-a">
+          <div class="dead">✗ Dead Logic：「価格帯には差があります」→ 押し付け</div>
+          <div class="step-line"><span class="icx">①</span>最初は安いのでいいかなって思われるお客様、多いです</div>
+          <div class="step-line"><span class="icx">②</span>今は可視光調光のオプションを無料にしていますので、価格差もそこまで大きくありません</div>
+          <div class="step-line"><span class="icx">③</span>あなたの目のカルテを持ってる技術士が、生活に合う1本を選び切ります</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="qno">Q5</span>白内障の手術前だけど、眩しくてつらい</div>
+        <div class="faq-a">
+          <div class="dead">✗ Dead Logic：「じゃあ真っ黒のサングラスを」→ 心情素通り</div>
+          <div class="step-line"><span class="icx">①</span>術前は特に眩しさが切実になる時期です</div>
+          <div class="step-line"><span class="icx">②</span>先日のお客様も、可視光調光1本で"外に出るのが楽になった"って言われて</div>
+          <div class="step-line"><span class="icx">③</span>眼科の見立てを踏まえて、見え方は落とさず眩しさだけをやわらげる濃度と色を、一緒に選ばせてもらえたら</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="qno">Q6</span>もう自分で外に出るのしんどい／諦めてた</div>
+        <div class="faq-a">
+          <div class="dead">✗ Dead Logic：「調光で楽になりますよ」→ 効果断定</div>
+          <div class="step-line"><span class="icx">①</span>"外に出るのがしんどい"は、術後の方によく聞くお言葉です</div>
+          <div class="step-line"><span class="icx">②</span>先日のお客様も、試着で外に出た瞬間"あ、これなら行ける"って言われたんです</div>
+          <div class="step-line"><span class="icx">③</span>まずは外で一度かけてみてください</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h3>目標と評価</h3>
+      <p>対象母数 <b>03/07 女60-69歳眼鏡客 1,906名</b>（培養681＋掘り起こし1,225）</p>
+      <table>
+        <tr><th>シナリオ</th><th>想定反応率</th><th>来店見込み</th><th>根拠</th></tr>
+        <tr><td>保守</td><td>LINE 0.64-0.77%+手書きDM 4-6%</td><td>20-38人</td><td>2026実測LINE来店率03=0.77%/07=0.64%</td></tr>
+        <tr><td><b>中央（目標）</b></td><td>個別DM+LINE重ね打ち3-4%</td><td><b>45-60人</b></td><td>手書き+LINE narrowcast補強想定</td></tr>
+        <tr><td>楽観</td><td>バースデーDM級5-7%</td><td>95-133人</td><td>2026バースデーDM回収率上限</td></tr>
+      </table>
+      <p style="font-size:12.5px">6/8 03/07設計戦略書の"約70人"は楽観すぎ、実測LINE来店率が想定より低かったため下方修正。成約は45-60人×購入率37-45%≈17-27人（店のKPI）。予算比率：販促費≦施策全売上（5万×45-60人≒225万〜300万円）の20%＝販促費45万〜60万円が上限目安。個別DM 1,906通×82円≒15.6万円。</p>
+
+      <div style="margin-top:16px;padding:14px 16px;border-left:4px solid #0b2545;background:#f8fafc;border-radius:6px">
+        <div style="font-weight:700;color:#0b2545;font-size:14px;margin-bottom:8px">🎯 全店 努力目標（土井マネージャー設定・2026-07-18）</div>
+        <p style="margin:0 0 6px 0;font-size:13.5px"><b>期間</b>：7/15（火）〜8/31（月）</p>
+        <p style="margin:0 0 6px 0;font-size:13.5px"><b>全店合計</b>：<b>調光 75組</b> ／ 偏光 15組</p>
+        <p style="margin:0 0 6px 0;font-size:12.5px;color:#334155">根拠：25年度 月次実績（03/07/M1/M3 全店）。<b>努力目標</b>として設定。</p>
+        <p style="margin:0;font-size:12.5px;color:#334155">本WBの店舗別目標（03/07調光施策 = 中央 45-60人）と、全店の日常回転を含めた総目標 75組は矛盾しない。03/07が調光メイン施策で先行、M1・M3は日常接客での上乗せで合算する構造。</p>
+        <p style="margin:6px 0 0 0;font-size:12px;color:#64748b">出典：Cybozu 内部スレ「【内部向け】夏帯8月施策」#14（土井研一 2026-07-18 12:21）</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="brand">株式会社メガネの金剛 — メガネの金剛店（03）／MOCA北野田店（07）</div>
+    <p>本WBは辻実成が設計し、2026-06-19実送信版のターゲット定義・6/16 v0.2モノローグ・実DM実績データに基づき作成した。修正点・違和感があればCybozu C1スレへ。</p>
+    <ul>
+      <li>2026-06-19 09:45 辻→小池先生 実送信版（ターゲット定義100字ロック）</li>
+      <li>2026-06-16 調光ターゲット抽出 見る用HTML v0.2</li>
+      <li>2026-06-14 夏帯2エンジン設計ロック v0.1</li>
+      <li>2026-06-14 可視光調光 JINS vs HOYA 性能比較 v0.1</li>
+      <li>2026-05-12 03中峰さんヒアリング</li>
+      <li>2026-05-15 Cybozu C3 #36（社長実発言）</li>
+      <li>マーケティングデザイン室データ管理 スプシ（DM実績・LINE配信実績）</li>
+    </ul>
+  </footer>
+
+</div>
+</body>
+</html>
