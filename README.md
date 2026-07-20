@@ -58,6 +58,7 @@ kongo_materials/
 |:--|:--|:--|
 | `2026-natsuobi/m3-henko/` | https://tsuji-ai.github.io/kongo_materials/2026-natsuobi/m3-henko/ | 2026年夏帯施策 M3店 偏光（RARTS）向けWB |
 | `2026-natsuobi/0307-chokou/` | https://tsuji-ai.github.io/kongo_materials/2026-natsuobi/0307-chokou/ | 2026年夏帯施策 03/07店 調光（HOYA SENSITY）向けWB |
+| `2026-claude-zenten/staff-1pager/` | https://tsuji-ai.github.io/kongo_materials/2026-claude-zenten/staff-1pager/ | Claude Code全店展開 スタッフ向けWB 1pager（なぜ入れるのか・FAQ） |
 
 ## 検索エンジン対策
 

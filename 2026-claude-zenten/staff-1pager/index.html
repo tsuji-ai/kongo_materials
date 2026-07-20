@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>株式会社メガネの金剛、全店パソコンへのAI導入と「AI活用 やってみた」掲示板で、現場の工夫が店を越えて回る組織を実現</title>
+<!-- Source: 99_Backbone/gas/claude_zenten_wb1pager_webapp/index.html (WB1pager v0.1・辻検品2回済) → GitHub Pages 移行版 2026-07-20 -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --ink:#0f172a; --ink2:#334155; --muted:#64748b;
+    --line:#e2e8f0;
+    --navy:#0b2545; --navy2:#13315c; --navy3:#1a4173;
+    --gold:#b8860b; --gold-bg:#fef9e7; --gold-line:#fde68a;
+    --good:#0a7c4a; --good-bg:#eafaf1; --good-line:#bfe8d2;
+    --bad:#b91c1c; --bad-bg:#fdf1f1; --bad-line:#f3c6c6;
+  }
+  html,body{font-family:'Noto Sans JP',sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
+  body{background:#fff;padding:0}
+  .wrap{max-width:720px;margin:0 auto;padding:16px 16px 40px}
+
+  /* ===== Hero (PRtimes風バナー) ===== */
+  .hero{
+    background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 60%,var(--navy3) 100%);
+    color:#fff;border-radius:10px;padding:20px 18px 18px;
+    position:relative;overflow:hidden;margin-bottom:14px;
+  }
+  .hero::after{
+    content:"";position:absolute;right:-40px;top:-40px;width:180px;height:180px;
+    background:radial-gradient(circle,#ff6b35 0%,transparent 70%);opacity:.45;
+  }
+  .hero .chips{display:flex;gap:6px;margin-bottom:10px;position:relative;z-index:1;flex-wrap:wrap}
+  .hero .chip{font-size:11px;font-weight:700;padding:4px 12px;border-radius:99px;background:rgba(255,255,255,.18);letter-spacing:.05em}
+  .hero .chip.ac{background:#ff6b35}
+  .hero h1{font-size:20px;font-weight:900;line-height:1.55;position:relative;z-index:1;letter-spacing:-.01em}
+  .hero .meta{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px;font-size:11px;color:#aac0dc;position:relative;z-index:1}
+  .hero .meta b{color:#fff;font-weight:700}
+
+  /* ===== 傘コピー帯 ===== */
+  .umbrella{
+    background:linear-gradient(90deg,var(--gold-bg) 0%,#fff8d6 50%,var(--gold-bg) 100%);
+    border:1px solid var(--gold-line);border-radius:8px;
+    padding:14px 16px;margin-bottom:14px;
+    display:flex;align-items:center;justify-content:center;gap:10px;text-align:center;
+  }
+  .umbrella .ic{font-size:26px;line-height:1;flex-shrink:0}
+  .umbrella .body{font-size:15px;font-weight:900;color:var(--ink);letter-spacing:.01em;line-height:1.6}
+
+  /* ===== リード枠 ===== */
+  .lead{
+    border:1px solid var(--line);border-left:4px solid var(--navy);
+    border-radius:6px;background:#f8fafc;
+    padding:16px 16px;margin-bottom:6px;font-size:13.5px;line-height:1.9;
+  }
+  .lead .dateline{font-weight:900;color:var(--navy)}
+
+  /* ===== 検品用注記（本文と視覚的に分離） ===== */
+  .inspect-note{
+    font-size:11px;color:#888;font-style:italic;
+    border:1px dashed #cbd5e1;background:#fafafa;
+    padding:8px 12px;margin:6px 0 16px;border-radius:4px;line-height:1.7;
+  }
+  .inspect-note.block{font-style:normal}
+  .inspect-note.block .ttl{display:block;font-weight:700;color:#666;margin-bottom:4px;font-style:italic}
+  .inspect-note.block ol{margin-left:16px}
+
+  /* ===== セクション共通 ===== */
+  section{margin:22px 0}
+  section > h2{
+    font-size:16px;font-weight:900;color:var(--navy);
+    border-bottom:2px solid var(--navy);padding-bottom:6px;margin-bottom:12px;
+    letter-spacing:.01em;
+  }
+  section > h2.faqh{border-bottom-color:var(--gold);color:var(--gold)}
+  p{font-size:13px;line-height:1.95;margin-bottom:10px;color:var(--ink2)}
+  p:last-child{margin-bottom:0}
+  strong{color:var(--ink);font-weight:700}
+  .subhead{font-size:13.5px;font-weight:900;color:var(--navy);margin:14px 0 6px}
+  ul.bullets{margin-left:18px;margin-bottom:10px}
+  ul.bullets li{font-size:13px;line-height:1.9;color:var(--ink2);margin-bottom:4px}
+
+  ol.numbered{margin-left:0;list-style:none;counter-reset:step}
+  ol.numbered > li{
+    counter-increment:step;position:relative;padding-left:32px;margin-bottom:14px;
+  }
+  ol.numbered > li::before{
+    content:counter(step);position:absolute;left:0;top:0;
+    width:22px;height:22px;border-radius:50%;background:var(--navy);color:#fff;
+    font-size:11px;font-weight:900;display:flex;align-items:center;justify-content:center;
+  }
+  ol.numbered > li .lead-bold{font-size:13.5px;font-weight:900;color:var(--ink);display:block;margin-bottom:4px}
+  ol.numbered > li p{margin-bottom:0}
+
+  ol.steps{margin-left:0;list-style:none;counter-reset:st}
+  ol.steps > li{counter-increment:st;position:relative;padding-left:30px;margin-bottom:8px;font-size:13px;line-height:1.85;color:var(--ink2)}
+  ol.steps > li::before{
+    content:counter(st);position:absolute;left:0;top:1px;
+    width:20px;height:20px;border-radius:50%;background:var(--gold);color:#fff;
+    font-size:10.5px;font-weight:900;display:flex;align-items:center;justify-content:center;
+  }
+
+  /* ===== リーダーの声：代表コメント枠 ===== */
+  .leader-box{
+    background:var(--navy);color:#fff;border-radius:10px;
+    padding:20px 20px 16px;position:relative;
+  }
+  .leader-box .who{font-size:13px;font-weight:900;margin-bottom:10px;letter-spacing:.02em}
+  .leader-box .who .role{font-weight:400;color:#aac0dc;font-size:11.5px;margin-left:2px}
+  .leader-box blockquote{
+    font-size:14.5px;line-height:2;position:relative;padding-left:18px;
+  }
+  .leader-box blockquote::before{
+    content:"\201C";position:absolute;left:-6px;top:-10px;font-size:38px;color:#ff6b35;
+    font-family:Georgia,serif;line-height:1;
+  }
+
+  /* ===== スタッフの声：quoteカード ===== */
+  .staff-quotes{display:flex;flex-direction:column;gap:12px}
+  .quote-card{
+    background:var(--gold-bg);border:1px solid var(--gold-line);border-radius:8px;
+    padding:14px 16px;position:relative;padding-left:26px;
+  }
+  .quote-card::before{
+    content:"\201C";position:absolute;left:8px;top:2px;font-size:26px;color:var(--gold);
+    font-family:Georgia,serif;line-height:1;
+  }
+  .quote-card p{font-size:13px;line-height:1.9;color:var(--ink);margin-bottom:0}
+
+  /* ===== FAQ ===== */
+  .faq-lead{font-size:12.5px;color:var(--ink2);margin-bottom:16px;font-weight:700}
+  .qcard{margin-bottom:18px;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+  .qcard .qh{background:#f1f5f9;padding:10px 14px;font-size:13.5px;font-weight:900;color:var(--navy)}
+  .qcard .dead{background:var(--bad-bg);border-top:1px solid var(--bad-line);padding:10px 14px 12px}
+  .qcard .dead .lab{font-size:11.5px;font-weight:900;color:var(--bad);margin-bottom:3px}
+  .qcard .dead .say{font-size:12.5px;color:var(--ink);margin-bottom:4px;line-height:1.7}
+  .qcard .dead .why{font-size:11.5px;color:#8a5252;line-height:1.7}
+  .qcard .good{background:var(--good-bg);border-top:1px solid var(--good-line);padding:10px 14px 12px}
+  .qcard .good .lab{font-size:11.5px;font-weight:900;color:var(--good);margin-bottom:3px}
+  .qcard .good .say{font-size:12.5px;color:var(--ink);line-height:1.85}
+
+  /* ===== 会社情報ボイラープレート footer ===== */
+  .company-footer{
+    margin-top:28px;padding-top:16px;border-top:2px solid var(--navy);
+  }
+  .company-footer h3{font-size:11.5px;font-weight:900;color:var(--navy);letter-spacing:.15em;margin-bottom:8px}
+  .company-footer .cbox{font-size:11.5px;line-height:1.9;color:var(--ink2)}
+  .company-footer .cbox b{color:var(--ink)}
+  .quote-note{font-size:10.5px;color:#94a3b8;margin-top:6px;line-height:1.7}
+  .credit-line{margin-top:14px;font-size:10.5px;color:var(--muted);font-style:italic;line-height:1.8}
+
+  @media (max-width:480px){
+    .wrap{padding:10px 10px 28px}
+    .hero{padding:16px 14px 14px;border-radius:8px}
+    .hero h1{font-size:17px}
+    .umbrella{flex-direction:column;padding:12px 12px}
+    .umbrella .body{font-size:13.5px}
+    section > h2{font-size:14.5px}
+    .lead{font-size:12.5px;padding:13px 13px}
+    .leader-box blockquote{font-size:13px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <div class="chips">
+      <span class="chip ac">PRESS RELEASE</span>
+      <span class="chip">全店展開キット</span>
+    </div>
+    <h1>株式会社メガネの金剛、全店パソコンへのAI導入と「AI活用 やってみた」掲示板で、現場の工夫が店を越えて回る組織を実現</h1>
+    <div class="meta">🏢 <b>株式会社メガネの金剛</b></div>
+  </div>
+
+  <div class="umbrella">
+    <span class="ic">☀️</span>
+    <div class="body">「誰かの『やってみた』が、次の誰かのヒントになる。」</div>
+  </div>
+
+  <div class="lead">
+    <span class="dateline">2026年9月1日、大阪・南河内</span> — 株式会社メガネの金剛（以下、メガネの金剛）は本日、2026年7月下旬から全店（03店・07店・M1・M3）で展開してきた、文字で相談できるAI「Claude Code」導入の現場成果をスタッフ間で共有した。本導入の最大の特徴は、<strong>使い方を上から配らず、現場の「やってみた」を持ち寄って広げた</strong>点にある。各店のパソコンへの導入後、スタッフはまず「はじめての操作」を試し、サイボウズ掲示板「AI活用 やってみた」に結果を1件投稿する——そこから先は、お客様向けの説明文づくり、メモの表化、接客準備など、それぞれの現場の使い方が掲示板に集まり、ある店の工夫が別の店のヒントになる流れが生まれている。
+  </div>
+  <div class="inspect-note">（リード日付「2026年9月1日」は仮置き。検品で確定してください）</div>
+
+  <section>
+    <h2>サービスの要約</h2>
+    <p>Claude Codeは、文字で話しかけると文字で答えてくれるAI。店のパソコンに一度入れれば、いつでも呼び出して使える。「遠近両用レンズの説明を、お客様向けにやさしい言葉で書いて」「このメモを表にして」——日本語でそのまま話しかけるだけでよく、専門知識も特別な操作も要らない。</p>
+    <p>導入は、Googleドライブの「共有資料」フォルダに全店分のインストーラーとやり方ガイドを配置する自己配布型をとった。各店は自分の店のファイルを開き、2つのアプリ（Googleドライブ・Claude Code）を画面の案内どおりに入れるだけで使い始められる。</p>
+    <p>この導入の主役は、一人ひとりの<strong>「やってみた」</strong>。サイボウズ掲示板「AI活用 やってみた」は、その使い方が店を越えて広がっていく場になる。入れ終わった日に「はじめての操作」を試し、出てきた答えを掲示板に貼る——これが全員共通の最初の1投稿。2件目からは自由で、うまくいった使い方も、詰まった画面の写真も、どちらも「やってみた」として持ち寄る。誰かの投稿が、次の誰かの「それ、うちの店でもやってみよう」になる。</p>
+    <p>約束ごとは3つだけ。<strong>お客様の個人情報（名前・住所・電話番号・購入履歴）は打ち込まない。出てきた答えは下書きとして、自分で確かめてから使う。詰まったら、画面の写真を1枚、店長か辻へ。</strong>判断は、これまでどおり人がする。</p>
+  </section>
+
+  <section>
+    <h2>課題</h2>
+    <p>これまで、AIは「一部の詳しい人のもの」で止まりがちだった。</p>
+
+    <div class="subhead">「難しそう」で一歩目が出ない層（パソコン控えめなベテラン層）</div>
+    <ul class="bullets">
+      <li>「パソコンはあまり得意じゃない。AIなんて自分には関係ない」と、最初から距離を置いていた</li>
+      <li>はじめて見る画面——「Windows によって PC が保護されました」の警告、黒い画面のまま2〜3分続く待ち時間——で「壊れた？」「間違えた？」と手が止まりやすい</li>
+    </ul>
+
+    <div class="subhead">「時間がない」層（繁忙の中堅層）</div>
+    <ul class="bullets">
+      <li>ただでさえ忙しいのに、新しいことを覚える時間はない</li>
+      <li>「結局、仕事が増えるだけでは」という警戒</li>
+    </ul>
+
+    <div class="subhead">共通の不安</div>
+    <ul class="bullets">
+      <li>「AIに仕事を取られるのではないか」</li>
+      <li>「出てきた答えを、そのまま信じていいのか」</li>
+      <li>一人で詰まったとき、誰に聞けばいいか分からず、そのまま止まってしまう</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>課題解決</h2>
+    <p>メガネの金剛は、この導入を「ツールの配布」ではなく<strong>「現場の工夫が回る仕組みづくり」</strong>として設計した。</p>
+    <ol class="numbered">
+      <li>
+        <span class="lead-bold">「使い方は配らず、持ち寄る」形にした</span>
+        <p>中心は掲示板「AI活用 やってみた」。最初の投稿は全員同じ「はじめての操作」で揃え、迷いなく1件目を出せるようにした。2件目からは自由——うまくいった使い方も、詰まった画面の写真も、どちらも立派な「やってみた」。</p>
+      </li>
+      <li>
+        <span class="lead-bold">最初の一歩を、物理的に軽くした</span>
+        <p>インストーラーとやり方ガイドは「共有資料」フォルダに全店分を配置。ガイドは画面の案内どおりに進めば迷わない作りで、警告画面や黒い画面の待ち時間も「正しいファイルです」「ちゃんと進んでいます」と先回りして書いた。</p>
+      </li>
+      <li>
+        <span class="lead-bold">安心の枠を、先に決めた</span>
+        <p>約束ごと3つ（個人情報は打ち込まない／答えは下書き／詰まったら写真1枚で店長か辻へ）。AIが人の判断を代行する仕組みにはしない。</p>
+      </li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>リーダーの声</h2>
+    <div class="leader-box">
+      <div class="who">佐藤社長<span class="role">（株式会社メガネの金剛）</span></div>
+      <blockquote>「正社員かパートかという境目は、僕の中ではあまりありません。パートさん・アルバイトさんでもAIが"民主化"されて、みんなのパフォーマンスが上がっている状態が、経営的に見て最も生産性が高い。そして何より大事なのは店頭です。しんどくなってしまっている雑務や作業はAIに振って、店頭に百パーセント向かえるようにしていきましょう。」</blockquote>
+    </div>
+    <div class="quote-note">※2026年5月の朝活・店長会議での複数回の発言をもとに構成</div>
+    <div class="inspect-note">検品で確定してください（逐語原文は起案根拠に添付。「複数回の発言をもとに構成」の行は配布版にも残す）</div>
+  </section>
+
+  <section>
+    <h2>スタッフの声</h2>
+    <div class="staff-quotes">
+      <div class="quote-card">
+        <p>「最初は『はじめての操作』を貼っただけでした。他の店の投稿を見て、お客様へのレンズ説明文を作らせてみたら、たたき台が一瞬で出てきて、あとは自分の言葉に直すだけでよくなりました」（想定・販売スタッフ）</p>
+      </div>
+      <div class="quote-card">
+        <p>「黒い画面で固まって、写真を送ったら店長から『それ正常です』と返ってきて笑いました。詰まりの投稿も誰かの役に立つと聞いて、気が楽になりました」（想定・販売スタッフ）</p>
+      </div>
+    </div>
+    <div class="inspect-note">※現時点でスタッフの実使用の逐語記録が存在しないため「想定の声」と明記。展開後、掲示板の実投稿・実声に差し替える</div>
+  </section>
+
+  <section>
+    <h2>次のステップ</h2>
+    <p>スタッフがAIを使い始めるまでの流れ：</p>
+    <ol class="steps">
+      <li>Googleドライブの「共有資料」フォルダから、自分の店の「kongo_ai_install_◯◯.zip」とやり方ガイドを確認する</li>
+      <li>STEP A：Googleドライブを入れる（自社アカウント optkongo2015 でログイン）</li>
+      <li>STEP B：Claude Codeを入れる（zipを展開してダブルクリック→数分で完了）</li>
+      <li>入れ終わった日に「はじめての操作」を試し、出てきた答えを掲示板「AI活用 やってみた」に貼る（＝最初の1投稿）</li>
+      <li>2件目からは自由。困った時・手が止まった時に呼び出し、詰まったら画面の写真を1枚、店長か辻へ</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>今後の展望</h2>
+    <p>掲示板に集まった使い方は、店長会議や朝礼の場で拾い上げ、「使い方のレシピ」としてやり方ガイドの次の版に還流していく。詰まりの報告が多い箇所は、ガイドそのものを直す。上から教える形ではなく、現場の「やってみた」が積み上がって道具が育っていく形を続ける。</p>
+  </section>
+
+  <section>
+    <h2>提供開始日</h2>
+    <ul class="bullets">
+      <li>キット（インストーラー＋やり方ガイド）：配布済み（Googleドライブ「共有資料」フォルダ）</li>
+      <li>各店パソコンへのインストール：2026年7月中</li>
+      <li>全体への開示（掲示板での発信）：2026年7月下旬</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2 class="faqh">FAQ（Anti-Dead Logic Edition）</h2>
+    <div class="faq-lead">現場の言葉を、否定しない。肯定共感→事実→提案の3段で受ける。</div>
+
+    <div class="qcard">
+      <div class="qh">Q1.「パソコンが苦手で、難しそう」</div>
+      <div class="dead">
+        <div class="lab">❌ Dead Logic（北風）</div>
+        <div class="say">「大丈夫です、簡単ですよ」</div>
+        <div class="why">→ 不安な気持ちに寄り添わないまま「大丈夫」とだけ言われても、安心にはつながらない</div>
+      </div>
+      <div class="good">
+        <div class="lab">⭕️ Working Backwards（太陽）</div>
+        <div class="say">「ですよね、その気持ちよく分かります。だからこそ、やり方ガイドは画面の案内どおりに進めば迷わないように作ってあります。『よくあるつまずき』も先回りして書いてあります。分からなくなったら、画面の写真を1枚撮って、店長か辻に送ってください。それだけで大丈夫です」</div>
+      </div>
+    </div>
+
+    <div class="qcard">
+      <div class="qh">Q2.「ただでさえ忙しいのに、仕事が増えるんじゃないですか」</div>
+      <div class="dead">
+        <div class="lab">❌ Dead Logic</div>
+        <div class="say">「効率化できますから、むしろ楽になります」</div>
+        <div class="why">→ 「今は大変」という実感を素通りしたまま、効果だけを押し付けている</div>
+      </div>
+      <div class="good">
+        <div class="lab">⭕️ Working Backwards</div>
+        <div class="say">「忙しい中で新しいことを増やすのは、正直しんどいですよね。お願いしたいのは、入れた日の『はじめての操作』の1投稿だけです。そこから先は、困った時・手が止まった時に呼び出す道具として、それぞれのペースで使ってもらえれば大丈夫です」</div>
+      </div>
+    </div>
+
+    <div class="qcard">
+      <div class="qh">Q3.「AIに自分たちの仕事が取られるんじゃないですか」</div>
+      <div class="dead">
+        <div class="lab">❌ Dead Logic</div>
+        <div class="say">「そんなことはないです、心配しすぎです」</div>
+        <div class="why">→ 不安をただ否定するだけで、なぜ大丈夫なのかの説明がない</div>
+      </div>
+      <div class="good">
+        <div class="lab">⭕️ Working Backwards</div>
+        <div class="say">「その心配、よく分かります。約束ごとの1つに『出てきた答えは下書き。大事なことは自分で確かめてから使う』があります。判断するのは、これまでどおり自分自身です。AIが受け持つのは雑務や下書きで、店頭でお客様と向き合う時間を取り戻すための道具です」</div>
+      </div>
+    </div>
+
+    <div class="qcard">
+      <div class="qh">Q4.「警告が出たり、黒い画面のまま止まってる気がして怖い」</div>
+      <div class="dead">
+        <div class="lab">❌ Dead Logic</div>
+        <div class="say">「無視してそのまま待ってください」</div>
+        <div class="why">→ 説明なしの「無視していい」は、余計に不安になる</div>
+      </div>
+      <div class="good">
+        <div class="lab">⭕️ Working Backwards</div>
+        <div class="say">「見た瞬間ドキッとしますよね。『Windows によって PC が保護されました』は正しいファイルでも出ることがある表示で、あわてず『詳細情報』→『実行』で進めます。黒い画面が2〜3分続くのも、壊れているのではなく裏側でちゃんと進んでいる状態です。何も操作せず待っていれば『インストールできました』に変わります」</div>
+      </div>
+    </div>
+
+    <div class="qcard">
+      <div class="qh">Q5.「お客様の個人情報を入力してもいいんですか」</div>
+      <div class="dead">
+        <div class="lab">❌ Dead Logic</div>
+        <div class="say">「気をつけて使ってください」</div>
+        <div class="why">→ 何がよくて何がダメか分からないまま、注意だけ促している</div>
+      </div>
+      <div class="good">
+        <div class="lab">⭕️ Working Backwards</div>
+        <div class="say">「そこは約束ごととして、はっきり決めてあります。お客様の名前・住所・電話番号・購入履歴は打ち込まないでください。レンズの説明文づくりやメモの整理といった使い方であれば問題ありません」</div>
+      </div>
+    </div>
+
+    <div class="qcard">
+      <div class="qh">Q6.「出てきた答え、そのまま信じていいんですか」</div>
+      <div class="dead">
+        <div class="lab">❌ Dead Logic</div>
+        <div class="say">「基本的には正確です」</div>
+        <div class="why">→ 精度を保証するような言い方は、間違っていた時の対応を難しくする</div>
+      </div>
+      <div class="good">
+        <div class="lab">⭕️ Working Backwards</div>
+        <div class="say">「正直に言うと、答えがまちがっていることもあります。だから、出てきた答えはあくまで下書きとして扱ってください。大事なことは自分で確かめてから使う——この姿勢を崩さなければ、安心して使えます」</div>
+      </div>
+    </div>
+
+    <div class="qcard">
+      <div class="qh">Q7.「何に使えばいいのか、正直まだ分からない」</div>
+      <div class="dead">
+        <div class="lab">❌ Dead Logic</div>
+        <div class="say">「いろいろ使ってみてください」</div>
+        <div class="why">→ 具体例がないと、何から始めればいいか分からないまま止まってしまう</div>
+      </div>
+      <div class="good">
+        <div class="lab">⭕️ Working Backwards</div>
+        <div class="say">「最初は全員同じです。まず『はじめての操作』をそのまま貼るところから。その先は、掲示板『AI活用 やってみた』を眺めてみてください。他の店の誰かの使い方が、そのまま自分の店のヒントになります」</div>
+      </div>
+    </div>
+
+    <div class="qcard">
+      <div class="qh">Q8.「詰まったら、誰に聞けばいいですか」</div>
+      <div class="dead">
+        <div class="lab">❌ Dead Logic</div>
+        <div class="say">「マニュアルを見てください」</div>
+        <div class="why">→ その場で解決できないから聞きたいのに、振り出しに戻される</div>
+      </div>
+      <div class="good">
+        <div class="lab">⭕️ Working Backwards</div>
+        <div class="say">「画面の写真を1枚撮って、店長か辻に送ってください。それだけで大丈夫です。詰まりの写真を掲示板に貼ってもらえたら、同じ場所で詰まる次の誰かのヒントにもなります。一人で抱え込まなくていいように、最初からその形にしてあります」</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="company-footer">
+    <h3>会社情報</h3>
+    <div class="cbox">
+      <b>株式会社メガネの金剛</b><br>
+      展開店舗：03店・07店・M1・M3
+    </div>
+    <div class="credit-line">作成：2026-07-14 v0.1（社内検品版）</div>
+  </div>
+
+  <div class="inspect-note block">
+    <span class="ttl">検品ポイント（辻向け・配布版では削除）</span>
+    <ol>
+      <li>リード日付「2026年9月1日」の確定</li>
+      <li>リーダーの声＝社長実発言3件（05-03店長会議×2・05-05朝活）を接いだ整え文。逐語原文との照合＋社長本人への仁義（スタッフ向けに載せる事前確認）の要否。「複数回の発言をもとに構成」の注記は配布版にも残す</li>
+      <li>スタッフの声＝実声ゼロのため「想定」明記。このまま載せるか、削るか、展開後差し替え前提で行くか</li>
+      <li>FAQ 8本のトーン</li>
+      <li>課題ペルソナが匿名属性（ベテラン層/中堅層）止まり。SG版は名前付き仮称ペルソナ（Kさん/Aさん）。展開後の実声で個人エピソード化するか</li>
+    </ol>
+  </div>
+
+</div>
+</body>
+</html>
